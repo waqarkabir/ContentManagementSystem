@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6R85tjcc/2/SnR9x5ZtsKMyU1dNgtJysCPoZ5BNzsDo2cK16rcp/486Q3nutCvZf8w7d3wnmraWTEfs/k7FVpQ==",
+  "success": true,
+  "projectFilePath": "D:\\Learning\\EVSTraining\\ASPDotNetCoreMVC\\Dotnet5\\Content Management System\\WebApp\\WebApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
