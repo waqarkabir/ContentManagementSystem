@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
     public class HomeController: Controller
     {
-        public JsonResult Index()
+        private readonly IEmployeeRepository _employeeRepository;
+
+        public HomeController(IEmployeeRepository employeeRepository)
         {
-            return Json(new { Id=1, Name = "Waqar"});
+            _employeeRepository = employeeRepository;
+        }
+        public string Index()
+        {
+            return _employeeRepository.GetEmployee(1).Name;
         }
     }
 }
