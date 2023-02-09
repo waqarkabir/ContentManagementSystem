@@ -31,27 +31,18 @@ namespace WebApp
         {
             if (env.IsDevelopment())
             {
-                DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions()
-                { 
-                    SourceCodeLineCount = 5
-                };
-                app.UseDeveloperExceptionPage(developerExceptionPageOptions);
+                app.UseDeveloperExceptionPage();
             }
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
             app.UseRouting();
-            app.Run((context) =>
-                {
-                    throw new Exception("error");
-                });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    throw new Exception("Some error processing the request");
-                    await context.Response.WriteAsync("Hello World");
+                    await context.Response.WriteAsync($"Environment Name: {env.EnvironmentName}");
                 });
             });
         }
