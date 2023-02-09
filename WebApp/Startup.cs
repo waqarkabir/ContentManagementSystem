@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +25,8 @@ namespace WebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            MvcOptions mvcOptions = new MvcOptions();
+            services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,15 +37,17 @@ namespace WebApp
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseStaticFiles();
-
             app.UseRouting();
+            app.UseStaticFiles(); 
+
+            
+            app.UseMvcWithDefaultRoute();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync($"Environment Name: {env.EnvironmentName}");
+                    await context.Response.WriteAsync("Hello World");
                 });
             });
         }
