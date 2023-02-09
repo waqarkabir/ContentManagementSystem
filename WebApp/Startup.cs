@@ -31,21 +31,26 @@ namespace WebApp
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions()
+                { 
+                    SourceCodeLineCount = 5
+                };
+                app.UseDeveloperExceptionPage(developerExceptionPageOptions);
             }
 
-            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFileNames.Add("Food.html");
-            app.UseDefaultFiles(defaultFilesOptions);
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.Run((context) =>
+                {
+                    throw new Exception("error");
+                });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
+                    throw new Exception("Some error processing the request");
                     await context.Response.WriteAsync("Hello World");
                 });
             });
