@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Models;
 
 namespace WebApp
 {
@@ -27,6 +28,8 @@ namespace WebApp
         {
             MvcOptions mvcOptions = new MvcOptions();
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
+
+            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
