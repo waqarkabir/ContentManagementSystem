@@ -48,5 +48,11 @@ namespace WebApp.Controllers
             return View(homeDetailsViewModel);
         }
         #endregion
+
+        public ViewResult Index()
+        { 
+            var model = _employeeRepository.GetAllEmployees();
+            return View(model);
+        }
     }
 }

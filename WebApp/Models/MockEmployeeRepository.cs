@@ -16,6 +16,12 @@ namespace WebApp.Models
                 new Employee(){ Id =3, Name ="Imran", Email = "imran@gmail.com", Department = "Software Development"}
             };
         }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return employeeList;
+        }
+
         public Employee GetEmployee(int id)
         {
             Employee employee = employeeList.FirstOrDefault(p=>p.Id == id);
