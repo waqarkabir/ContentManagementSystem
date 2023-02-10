@@ -36,7 +36,7 @@ namespace WebApp.Controllers
         #endregion
 
         #region Returns View  Result
-        public ViewResult Index()
+        public ViewResult Details()
         {
             Employee model = _employeeRepository.GetEmployee(1);
             return View(model);
