@@ -27,6 +27,8 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             MvcOptions mvcOptions = new MvcOptions();
+
+            //Note: To use Xml Serializer Formatter, just chain another method name "AddXmlSerializerFormatters()"
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
 
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();

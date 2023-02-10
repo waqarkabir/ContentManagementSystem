@@ -11,9 +11,36 @@ namespace WebApp.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        public string Index()
+
+        #region Returns string
+        //public string Index()
+        //{
+        //    return _employeeRepository.GetEmployee(1).Name;
+        //}
+        #endregion
+
+        #region Returns JsonResult when we need Json
+        //public JsonResult Details()
+        //{ 
+        //    Employee model = _employeeRepository.GetEmployee(1);
+        //    return Json(model);
+        //}
+        #endregion
+
+        #region Returns ObjectResult when we deal with apis
+        //public ObjectResult ObjectDetails()
+        //{
+        //    Employee model = _employeeRepository.GetEmployee(1);
+        //    return new OkObjectResult(model);
+        //}
+        #endregion
+
+        #region Returns View  Result
+        public ViewResult Index()
         {
-            return _employeeRepository.GetEmployee(1).Name;
+            Employee model = _employeeRepository.GetEmployee(1);
+            return View(model);
         }
+        #endregion
     }
 }
