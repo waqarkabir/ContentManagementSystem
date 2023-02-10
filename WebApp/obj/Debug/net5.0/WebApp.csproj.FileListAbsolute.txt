@@ -20,3 +20,14 @@ D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebAp
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.pdb
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.genruntimeconfig.cache
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\ref\WebApp.dll
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\bin\Debug\net5.0\WebApp.Views.dll
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\bin\Debug\net5.0\WebApp.Views.pdb
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.RazorAssemblyInfo.cache
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.RazorAssemblyInfo.cs
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.TagHelpers.input.cache
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.TagHelpers.output.cache
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.RazorCoreGenerate.cache
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.RazorTargetAssemblyInfo.cs
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.Views.pdb
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\WebApp.csproj.CopyComplete
