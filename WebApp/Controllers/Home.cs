@@ -35,12 +35,12 @@ namespace WebApp.Controllers
         //}
         #endregion
 
-        #region Returns View  Result
-        public IActionResult Details()
+        #region Returns ViewResult
+        public ViewResult Details()
         {
-            ViewData["PageTitle"] = "Details";
+            ViewBag.PageTitle = "Details";
             Employee model = _employeeRepository.GetEmployee(1);
-            ViewData["Employee"] = model;
+            ViewBag.Employee = model;
             return View();
         }
         #endregion
