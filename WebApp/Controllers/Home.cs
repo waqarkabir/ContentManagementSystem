@@ -40,8 +40,7 @@ namespace WebApp.Controllers
         {
             ViewBag.PageTitle = "Details";
             Employee model = _employeeRepository.GetEmployee(1);
-            ViewBag.Employee = model;
-            return View();
+            return View(model);
         }
         #endregion
     }
