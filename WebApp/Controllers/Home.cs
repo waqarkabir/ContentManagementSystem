@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -38,9 +39,13 @@ namespace WebApp.Controllers
         #region Returns ViewResult
         public ViewResult Details()
         {
-            ViewBag.PageTitle = "Details";
             Employee model = _employeeRepository.GetEmployee(1);
-            return View(model);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel() 
+            {
+               Employee = model,
+               PageTitle = "Employee Details"
+            };
+            return View(homeDetailsViewModel);
         }
         #endregion
     }
