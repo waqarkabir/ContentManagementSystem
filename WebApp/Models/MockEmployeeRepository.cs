@@ -19,7 +19,7 @@ namespace WebApp.Models
 
         public IEnumerable<Employee> GetAllEmployees()
         {
-            return employeeList;
+            return  employeeList;
         }
 
         public Employee GetEmployee(int id)
