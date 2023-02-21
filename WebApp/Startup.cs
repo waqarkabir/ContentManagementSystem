@@ -46,10 +46,7 @@ namespace WebApp
             app.UseStaticFiles();
 
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }
