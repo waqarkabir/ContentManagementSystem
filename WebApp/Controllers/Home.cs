@@ -37,9 +37,9 @@ namespace WebApp.Controllers
         #endregion
 
         #region Returns ViewResult
-        public ViewResult Details()
+        public ViewResult Details(int id)
         {
-            Employee model = _employeeRepository.GetEmployee(1);
+            Employee model = _employeeRepository.GetEmployee(id);
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel() 
             {
                Employee = model,
@@ -48,7 +48,7 @@ namespace WebApp.Controllers
             return View(homeDetailsViewModel);
         }
         #endregion
-
+       
         public ViewResult Index()
         { 
             var model = _employeeRepository.GetAllEmployees();
