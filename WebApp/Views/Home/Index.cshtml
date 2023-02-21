@@ -1,32 +1,26 @@
 ﻿@model IEnumerable<WebApp.Models.Employee>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee List";
+}
+<h3>All Employees</h3>
 
-<html>
-    <head>
-        <title>
-
-        </title>
-    </head>
-    <body>
-        <h3>All Employees</h3>
-
-        <table>
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Department</td>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var item in Model)
-            {
-             <tr>
-                 <td>@item.Name</td>
-                 <td>@item.Email</td>
-                 <td>@item.Department</td>
-             </tr>   
-            }
-        </tbody>
-        </table>
-    </body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Department</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Department</td>
+            </tr>
+        }
+    </tbody>
+</table>
