@@ -8,7 +8,7 @@
 
         public string Email { get; set; }
 
-        public string Department { get; set; }
+        public Dept Department { get; set; }
 
     }
 }

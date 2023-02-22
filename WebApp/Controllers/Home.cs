@@ -53,5 +53,11 @@ namespace WebApp.Controllers
             var model = _employeeRepository.GetAllEmployees();
             return View(model);
         }
+
+        public ViewResult Create()
+        {
+            ViewBag.Title = "Create Employee";
+            return View();
+        }
     }
 }
