@@ -4,7 +4,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <environment include="Development"> @*include can have a list of values like Production,Staging*@
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    </environment>
+    <environment exclude="Development"> 
+        <link href="/lib/bootstrap/css/bootstrap.min.css"
+        @*In case of CDN
+            asp-fallback-href="local file"
+        asp-fallback-test-class="sr-only"
+        asp-fallback-test-property="position"
+        asp-fallback-test-value="absolute"
+        asp-suppress-fallback-integrity="true"*@
+        >
+    </environment>
     <link href="~/css/site.css" rel="stylesheet"/>
 </head>
 <body>
