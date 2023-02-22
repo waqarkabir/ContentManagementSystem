@@ -4,31 +4,48 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <environment include="Development"> @*include can have a list of values like Production,Staging*@
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <environment include="Development">
+        @*include can have a list of values like Production,Staging*@
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     </environment>
-    <environment exclude="Development"> 
+    <environment exclude="Development">
         <link href="/lib/bootstrap/css/bootstrap.min.css"
-        @*In case of CDN
-            asp-fallback-href="local file"
-        asp-fallback-test-class="sr-only"
-        asp-fallback-test-property="position"
-        asp-fallback-test-value="absolute"
-        asp-suppress-fallback-integrity="true"*@
-        >
+              @*In case of CDN
+                  asp-fallback-href="local file"
+                  asp-fallback-test-class="sr-only"
+                  asp-fallback-test-property="position"
+                  asp-fallback-test-value="absolute"
+                  asp-suppress-fallback-integrity="true"*@>
     </environment>
-    <link href="~/css/site.css" rel="stylesheet"/>
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
-
     <div class="container">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                <img src="~/images/pic4.jpg" width="30" height="30" asp-append-version="true" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="navbar-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">List</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Create">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         @RenderBody()
     </div>
-    @*<script src="~/lib/jquery/jquery-3.6.1.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.js"></script>*@
     @if (IsSectionDefined("Scripts"))
     {
         @RenderSection("Scripts", true)
     }
+    <script src="~/lib/jquery/jquery-3.6.1.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
