@@ -46,7 +46,10 @@ namespace WebApp
             app.UseStaticFiles();
 
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", /*owner name can be embeddedlike cms/*/"{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

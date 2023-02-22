@@ -4,7 +4,6 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
-    [Route("[controller]/[action]")]
     public class HomeController: Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -38,7 +37,6 @@ namespace WebApp.Controllers
         #endregion
 
         #region Returns ViewResult
-        [Route("{id?}")]
         public ViewResult Details(int? id)
         {
             Employee model = _employeeRepository.GetEmployee(id??1);
@@ -50,8 +48,6 @@ namespace WebApp.Controllers
             return View(homeDetailsViewModel);
         }
         #endregion
-        [Route("~/Home")]
-        [Route("~/")]
         public ViewResult Index()
         { 
             var model = _employeeRepository.GetAllEmployees();
