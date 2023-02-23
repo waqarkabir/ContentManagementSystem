@@ -4,7 +4,7 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
-    public class HomeController: Controller
+    public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
 
@@ -39,24 +39,39 @@ namespace WebApp.Controllers
         #region Returns ViewResult
         public ViewResult Details(int? id)
         {
-            Employee model = _employeeRepository.GetEmployee(id??1);
-            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel() 
+            Employee model = _employeeRepository.GetEmployee(id ?? 1);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-               Employee = model,
-               PageTitle = "Employee Details"
+                Employee = model,
+                PageTitle = "Employee Details"
             };
             return View(homeDetailsViewModel);
         }
         #endregion
         public ViewResult Index()
-        { 
+        {
             var model = _employeeRepository.GetAllEmployees();
             return View(model);
         }
 
+        [HttpGet]
         public ViewResult Create()
         {
             ViewBag.Title = "Create Employee";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+
+                ViewBag.Title = "Create Employee";
+                Employee model = _employeeRepository.AddEmployee(employee);
+                return RedirectToAction("details", new { id = model.Id });
+            }
+
             return View();
         }
     }

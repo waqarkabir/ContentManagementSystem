@@ -117,3 +117,5 @@ D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebAp
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\bin\Debug\net5.0\libman.json
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Home\Create.cshtml.g.cs
