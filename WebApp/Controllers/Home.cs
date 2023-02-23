@@ -57,7 +57,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public ViewResult Create()
         {
-            ViewBag.Title = "Create Employee";
+           
             return View();
         }
 
@@ -66,8 +66,6 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                ViewBag.Title = "Create Employee";
                 Employee model = _employeeRepository.AddEmployee(employee);
                 return RedirectToAction("details", new { id = model.Id });
             }
