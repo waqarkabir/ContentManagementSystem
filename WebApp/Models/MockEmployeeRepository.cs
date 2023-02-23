@@ -30,7 +30,7 @@ namespace WebApp.Models
 
         public Employee AddEmployee(Employee employee)
         {
-            employee.Id = employeeList.Max(p => p.Id + 1);
+            employee.Id = employeeList.Max(p => p.Id) + 1;
             employeeList.Add(employee);
             return employee;
         }
