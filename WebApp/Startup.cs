@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +32,8 @@ namespace WebApp
             //Note: To use Xml Serializer Formatter, just chain another method name "AddXmlSerializerFormatters()"
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
 
+            services.AddDbContextPool<AppDbContext>(options =>
+                options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
         }
 
@@ -48,7 +51,7 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", /*owner name can be embeddedlike cms/*/"{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("default", /*owner name can be embedded like cms/*/"{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
