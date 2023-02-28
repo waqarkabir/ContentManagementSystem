@@ -32,8 +32,8 @@ namespace WebApp
             //Note: To use Xml Serializer Formatter, just chain another method name "AddXmlSerializerFormatters()"
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
 
-            services.AddDbContextPool<AppDbContext>(options =>
-                options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
+            services.AddDbContextPool<AppDbContext>(
+                options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             services.AddScoped <IEmployeeRepository, SQLEmployeeRepository>();
         }
 
