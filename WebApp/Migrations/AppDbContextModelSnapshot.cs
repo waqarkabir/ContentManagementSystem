@@ -15,7 +15,7 @@ namespace WebApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("WebApp.Models.Employee", b =>
@@ -40,6 +40,22 @@ namespace WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Department = 2,
+                            Email = "waqarkabir@hotmail.com",
+                            Name = "Waqar Kabir"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Department = 2,
+                            Email = "mrincognito@gmail.com",
+                            Name = "Ahmed Qureshi"
+                        });
                 });
 #pragma warning restore 612, 618
         }

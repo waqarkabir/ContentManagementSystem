@@ -20,6 +20,16 @@ namespace WebApp.Migrations
                 {
                     table.PrimaryKey("PK_Employees", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "Id", "Department", "Email", "Name" },
+                values: new object[] { 1, 2, "waqarkabir@hotmail.com", "Waqar Kabir" });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "Id", "Department", "Email", "Name" },
+                values: new object[] { 2, 2, "mrincognito@gmail.com", "Ahmed Qureshi" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -9,7 +9,7 @@ using WebApp.Models;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230228063028_InitialMigration")]
+    [Migration("20230228094252_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace WebApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("WebApp.Models.Employee", b =>
@@ -42,6 +42,22 @@ namespace WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Department = 2,
+                            Email = "waqarkabir@hotmail.com",
+                            Name = "Waqar Kabir"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Department = 2,
+                            Email = "mrincognito@gmail.com",
+                            Name = "Ahmed Qureshi"
+                        });
                 });
 #pragma warning restore 612, 618
         }
