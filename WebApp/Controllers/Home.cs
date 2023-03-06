@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
 using WebApp.Models;
 using WebApp.ViewModels;
 
@@ -8,9 +11,12 @@ namespace WebApp.Controllers
     {
         private readonly IEmployeeRepository _employeeRepository;
 
-        public HomeController(IEmployeeRepository employeeRepository)
+        public IHostingEnvironment _hostingEnvironment { get; }
+
+        public HomeController(IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
+            _hostingEnvironment= hostingEnvironment;
         }
 
         #region Returns string
@@ -62,12 +68,28 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Employee model = _employeeRepository.AddEmployee(employee);
-                return RedirectToAction("details", new { id = model.Id });
+                string uniqueFileName = null;
+                if (model.Photo!=null)
+                {
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Employee newEmployee = new Employee()
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Department = model.Department,
+                    PhotoPath = uniqueFileName
+                };
+
+                _employeeRepository.AddEmployee(newEmployee);
+                return RedirectToAction("details", new { id = newEmployee.Id });
             }
 
             return View();

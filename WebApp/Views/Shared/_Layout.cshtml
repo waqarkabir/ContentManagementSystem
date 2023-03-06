@@ -41,11 +41,12 @@
         </nav>
         @RenderBody()
     </div>
+    
+    <script src="~/lib/jquery/jquery-3.6.1.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     @if (IsSectionDefined("Scripts"))
     {
         @RenderSection("Scripts", true)
     }
-    <script src="~/lib/jquery/jquery-3.6.1.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
