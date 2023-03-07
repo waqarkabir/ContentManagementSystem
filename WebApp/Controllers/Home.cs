@@ -42,24 +42,35 @@ namespace WebApp.Controllers
         //}
         #endregion
 
-        #region Returns ViewResult
+        #region Returns ViewResult Details
         public ViewResult Details(int? id)
         {
-            Employee model = _employeeRepository.GetEmployee(id ?? 1);
+            Employee employee = _employeeRepository.GetEmployee(id.Value);
+            if (employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id.Value);
+            }
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = model,
+                Employee = employee,
                 PageTitle = "Employee Details"
             };
             return View(homeDetailsViewModel);
         }
         #endregion
+
+        #region Index
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployees();
             return View(model);
         }
 
+        #endregion
+
+        #region Create
         [HttpGet]
         public ViewResult Create()
         {
@@ -89,6 +100,10 @@ namespace WebApp.Controllers
             return View();
         }
 
+        #endregion
+
+        #region Edit
+
         [HttpGet]
         public ViewResult Edit(int id)
         {
@@ -113,11 +128,11 @@ namespace WebApp.Controllers
                 employee.Name = model.Name;
                 employee.Email = model.Email;
                 employee.Department = model.Department;
-                if (model.Photos!=null)
+                if (model.Photos != null)
                 {
-                    if (model.ExistingPhotoPath!=null)
+                    if (model.ExistingPhotoPath != null)
                     {
-                       string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
+                        string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
                         System.IO.File.Delete(filePath);
                     }
                     employee.PhotoPath = ProcessUploadFile(model);
@@ -129,7 +144,9 @@ namespace WebApp.Controllers
 
             return View();
         }
+        #endregion
 
+        #region Process Upload File Method
         private string ProcessUploadFile(EmployeeCreateViewModel model)
         {
             string uniqueFileName = null;
@@ -143,12 +160,13 @@ namespace WebApp.Controllers
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                    photo.CopyTo(fileStream);
+                        photo.CopyTo(fileStream);
                     }
                 }
             }
 
             return uniqueFileName;
         }
+        #endregion
     }
 }
