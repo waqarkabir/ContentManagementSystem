@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WebApp.Models;
 
-namespace WebApp.Models
+namespace WebApp.ViewModels
 {
     public class EmployeeCreateViewModel
     {
