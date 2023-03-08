@@ -45,7 +45,15 @@ namespace WebApp
                 app.UseDeveloperExceptionPage();
             }
             else {
-                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                //Simple Server 404 Error
+                //app.UseStatusCodePages();
+
+                //Redirection technique not recommended
+                //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                
+                //Redirection technique not recommended
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+               
             }
             app.UseRouting();
             app.UseStaticFiles();
