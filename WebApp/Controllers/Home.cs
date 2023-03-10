@@ -42,9 +42,10 @@ namespace WebApp.Controllers
         //}
         #endregion
 
-        #region Returns ViewResult Details
-        public ViewResult Details(int? id)
+        #region Details
+        public IActionResult Details(int? id)
         {
+            throw new Exception("Error in Details View");
             Employee employee = _employeeRepository.GetEmployee(id.Value);
             if (employee == null)
             {
