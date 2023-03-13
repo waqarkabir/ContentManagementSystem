@@ -54,7 +54,7 @@ namespace WebApp
                 //Redirection technique not recommended
                 //app.UseStatusCodePagesWithRedirects("/Error/{0}");
                 
-                //Redirection technique not recommended
+                //ReExecute technique recommended
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
                
