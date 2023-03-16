@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using WebApp.Models;
@@ -10,13 +11,15 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly ILogger logger;
 
         public IHostingEnvironment _hostingEnvironment { get; }
 
-        public HomeController(IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment)
+        public HomeController(IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment, ILogger<HomeController> logger)
         {
             _employeeRepository = employeeRepository;
             _hostingEnvironment = hostingEnvironment;
+            this.logger = logger;
         }
 
         #region Returns string
@@ -45,7 +48,14 @@ namespace WebApp.Controllers
         #region Details
         public IActionResult Details(int? id)
         {
-             throw new Exception("Error in Details View");
+            //throw new Exception("Error in Details View");
+            logger.LogTrace("Trace Log");
+            logger.LogDebug("Debug Log");
+            logger.LogInformation("Information Log");
+            logger.LogWarning("Warning Log");
+            logger.LogError("Error Log");
+            logger.LogCritical("Critical Log");
+
             Employee employee = _employeeRepository.GetEmployee(id.Value);
             if (employee == null)
             {

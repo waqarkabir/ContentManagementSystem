@@ -1,14 +1,17 @@
-﻿ using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace WebApp.Models
 {
     public class SQLEmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext _context;
+        private readonly ILogger<SQLEmployeeRepository> logger;
 
-        public SQLEmployeeRepository(AppDbContext context)
+        public SQLEmployeeRepository(AppDbContext context, ILogger<SQLEmployeeRepository> logger)
         {
             _context = context;
+            this.logger = logger;
         }
         public Employee AddEmployee(Employee employee)
         {
@@ -33,6 +36,12 @@ namespace WebApp.Models
 
         public Employee GetEmployee(int id)
         {
+            logger.LogTrace("Trace Log");
+            logger.LogDebug("Debug Log");
+            logger.LogInformation("Information Log");
+            logger.LogWarning("Warning Log");
+            logger.LogError("Error Log");
+            logger.LogCritical("Critical Log");
             Employee employee = _context.Employees.Find(id);
             return employee;
         }
