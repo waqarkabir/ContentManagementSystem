@@ -9,7 +9,7 @@
         <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
-        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </environment>
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/lib/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
@@ -30,6 +30,11 @@
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" asp-controller="Home" asp-action="Create">Create</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="navbar-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
                     </li>
                 </ul>
             </div>
