@@ -61,8 +61,9 @@ namespace WebApp
 
                
             }
-            app.UseRouting();
+            app.UseAuthentication();
             app.UseStaticFiles();
+            app.UseRouting();
 
 
             app.UseMvc(routes =>

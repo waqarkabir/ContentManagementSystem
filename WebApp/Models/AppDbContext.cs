@@ -14,9 +14,10 @@ namespace WebApp.Models
 
         public DbSet<Employee> Employees { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.Seed();
+            base.OnModelCreating(builder);
+            builder.Seed();
         }
     }
 }
