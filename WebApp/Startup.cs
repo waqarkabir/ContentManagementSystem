@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,8 @@ namespace WebApp
 
             //Note: To use Xml Serializer Formatter, just chain another method name "AddXmlSerializerFormatters()"
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
-
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             services.AddScoped <IEmployeeRepository, SQLEmployeeRepository>();
