@@ -52,5 +52,15 @@ namespace WebApp.Controllers
         }
         #endregion
 
+        #region Logout
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        #endregion
+
     }
 }
