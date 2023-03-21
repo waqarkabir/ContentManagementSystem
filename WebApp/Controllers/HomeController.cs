@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -46,6 +47,7 @@ namespace WebApp.Controllers
         #endregion
 
         #region Details
+        [AllowAnonymous]
         public IActionResult Details(int? id)
         {
             //throw new Exception("Error in Details View");
@@ -73,6 +75,7 @@ namespace WebApp.Controllers
         #endregion
 
         #region Index
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployees();
@@ -83,6 +86,7 @@ namespace WebApp.Controllers
 
         #region Create
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
 
@@ -90,6 +94,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -116,6 +121,7 @@ namespace WebApp.Controllers
         #region Edit
 
         [HttpGet]
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _employeeRepository.GetEmployee(id);
@@ -131,6 +137,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             if (ModelState.IsValid)

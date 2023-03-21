@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +33,14 @@ namespace WebApp
             MvcOptions mvcOptions = new MvcOptions();
 
             //Note: To use Xml Serializer Formatter, just chain another method name "AddXmlSerializerFormatters()"
-            services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
+            services.AddMvc(mvcOptions =>
+            {
+                mvcOptions.EnableEndpointRouting = false;
+                var policy = new AuthorizationPolicyBuilder()
+                            .RequireAuthenticatedUser()
+                            .Build();
+                mvcOptions.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredLength = 8;
