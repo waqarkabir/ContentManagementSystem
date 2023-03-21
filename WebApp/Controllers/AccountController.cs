@@ -52,6 +52,31 @@ namespace WebApp.Controllers
         }
         #endregion
 
+        #region Login
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel VM)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(VM.Email, VM.Password, VM.RememberMe,false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+            }
+            return View(VM);
+        }
+        #endregion
+
         #region Logout
         [HttpPost]
         public async Task<IActionResult> Logout()
