@@ -73,7 +73,7 @@ namespace WebApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl) && !string.IsNullOrWhiteSpace(returnUrl))
+                    if (!string.IsNullOrEmpty(returnUrl) && !string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
