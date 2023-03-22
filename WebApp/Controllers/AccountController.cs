@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using WebApp.Models;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
@@ -42,7 +43,7 @@ namespace WebApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent:false);
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -69,7 +70,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(VM.Email, VM.Password, VM.RememberMe,false);
+                var result = await signInManager.PasswordSignInAsync(VM.Email, VM.Password, VM.RememberMe, false);
 
                 if (result.Succeeded)
                 {
@@ -77,13 +78,13 @@ namespace WebApp.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    else 
+                    else
                     {
                         return RedirectToAction("Index", "Home");
                     }
                 }
 
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
             return View(VM);
         }
@@ -99,5 +100,22 @@ namespace WebApp.Controllers
 
         #endregion
 
+        [HttpPost]
+        [HttpGet]
+        //[AcceptVerbs("Get","Post")]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+
+            if (user == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"The E-Mail {email} is already in use");
+            }
+        }
     }
 }
