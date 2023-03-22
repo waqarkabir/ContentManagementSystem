@@ -65,7 +65,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel VM)
+        public async Task<IActionResult> Login(LoginViewModel VM, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,14 @@ namespace WebApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    if (!string.IsNullOrEmpty(returnUrl) && !string.IsNullOrWhiteSpace(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else 
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
 
                     ModelState.AddModelError(string.Empty, "Invalid Login Attempt");

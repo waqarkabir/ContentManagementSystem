@@ -86,7 +86,6 @@ namespace WebApp.Controllers
 
         #region Create
         [HttpGet]
-        [Authorize]
         public ViewResult Create()
         {
 
@@ -94,7 +93,6 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -121,7 +119,6 @@ namespace WebApp.Controllers
         #region Edit
 
         [HttpGet]
-        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _employeeRepository.GetEmployee(id);
@@ -137,7 +134,6 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             if (ModelState.IsValid)
