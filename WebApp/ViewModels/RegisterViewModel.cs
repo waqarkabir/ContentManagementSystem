@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using WebApp.Utilities;
 
 namespace WebApp.ViewModels
 {
@@ -8,6 +9,8 @@ namespace WebApp.ViewModels
         [Required]
         [EmailAddress]
         [Remote("IsEmailInUse","Account")]
+        [ValidEmailDomainAttribute(allowedDomain: "codewithmind.com",
+            ErrorMessage = "Email domain must be codewithmind.com")]
         public string Email { get; set; }
 
         [Required]
