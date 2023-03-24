@@ -41,7 +41,7 @@ namespace WebApp
                             .Build();
                 mvcOptions.Filters.Add(new AuthorizeFilter(policy));
             });
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                 {
                     options.Password.RequiredLength = 8;
                     options.Password.RequiredUniqueChars = 3;
