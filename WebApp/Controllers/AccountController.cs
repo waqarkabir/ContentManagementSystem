@@ -69,6 +69,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel VM, string returnUrl)
         {
+
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(VM.Email, VM.Password, VM.RememberMe, false);
@@ -118,5 +119,7 @@ namespace WebApp.Controllers
                 return Json($"The E-Mail {email} is already in use");
             }
         }
+
+     
     }
 }
