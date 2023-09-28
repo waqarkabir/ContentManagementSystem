@@ -13,6 +13,8 @@ namespace WebApp.Controllers
         {
             this.roleManager = roleManager;
         }
+
+        #region Create Role
         [HttpGet]
         public IActionResult CreateRole()
         {
@@ -32,7 +34,7 @@ namespace WebApp.Controllers
                 IdentityResult identityResult = await roleManager.CreateAsync(identityRole);
                 if (identityResult.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ListRoles", "Administration");
                 }
                 else
                 {
@@ -44,5 +46,18 @@ namespace WebApp.Controllers
             }
             return View(VM);
         }
+
+        #endregion
+
+        #region List Roles
+        
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            var roles = roleManager.Roles;
+            return View(roles);
+        }
+
+        #endregion
     }
 }
