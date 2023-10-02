@@ -141,6 +141,7 @@ D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebAp
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Administration\CreateRole.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Administration\EditRole.cshtml.g.cs
+D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Administration\EditUsersInRole.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Administration\ListRoles.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Home\Create.cshtml.g.cs
 D:\Learning\EVSTraining\ASPDotNetCoreMVC\Dotnet5\Content Management System\WebApp\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
