@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,15 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
+    //Case 1: Both Admin & User is authorize to access
+    //[Authorize(Roles = "Admin,User")]
+
+    //Case 2: User should be in both mentioned roles to access
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User")]
+
+    //Case 3: Only Admin is authorize to access
+    //[Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
