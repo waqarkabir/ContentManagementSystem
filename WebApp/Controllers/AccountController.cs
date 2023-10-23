@@ -120,6 +120,14 @@ namespace WebApp.Controllers
             }
         }
 
-     
+        #region Access Denied
+        [HttpGet, AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        #endregion
+
     }
 }
