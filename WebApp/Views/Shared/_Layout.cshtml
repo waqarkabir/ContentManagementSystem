@@ -35,11 +35,22 @@
                     </li>
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
-                        <li class="navbar-item">
-                        <a class="nav-link" asp-controller="Administration" asp-action="ListRoles">
-                            Manage Roles
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage
                             </a>
-                    </li>    
+                            <div class="dropdown-menu" area-labelledby="navbarDropdownMenuLink">
+                                <a asp-controller="Administration" asp-action="ListUsers"
+                               class="dropdown-item">
+                                    Users
+                                </a>
+                                 <a asp-controller="Administration" asp-action="ListRoles"
+                               class="dropdown-item">
+                                    Roles
+                                </a>
+                            </div>
+                        </li>
                     }
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -55,13 +66,13 @@
                     }
                     else
                     {
-                        
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
-                    </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
                     }
                 </ul>
             </div>

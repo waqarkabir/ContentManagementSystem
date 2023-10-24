@@ -13,11 +13,11 @@ namespace WebApp.Controllers
     //[Authorize(Roles = "Admin,User")]
 
     //Case 2: User should be in both mentioned roles to access
-    [Authorize(Roles = "Admin")]
-    [Authorize(Roles = "User")]
+    //[Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "User")]
 
     //Case 3: Only Admin is authorize to access
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -217,6 +217,16 @@ namespace WebApp.Controllers
             }
 
             return RedirectToAction("EditRole", new { Id = roleId });
+        }
+        #endregion
+
+        #region List Users
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = userManager.Users;
+            return View(users);
         }
         #endregion
     }
