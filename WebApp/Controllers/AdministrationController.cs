@@ -229,5 +229,68 @@ namespace WebApp.Controllers
             return View(users);
         }
         #endregion
+
+        #region Edit User
+
+        [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            var userClaims = await userManager.GetClaimsAsync(user);
+            var userRoles = await userManager.GetRolesAsync(user);
+
+            var model = new EditUserViewModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                City = user.City,
+                Roles = userRoles,
+                Claims = userClaims.Select(x => x.Value).ToList()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel vm)
+        {
+            var user = await userManager.FindByIdAsync(vm.Id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with id = {vm.Id} cannot be found";
+                return View("NotFound");
+            }
+            else 
+            {
+                user.Email = vm.Email;
+                user.UserName= vm.UserName;
+                user.City = vm.City;
+
+               var result = await userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(vm);
+            }
+        }
+
+        #endregion
     }
 }
