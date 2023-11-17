@@ -56,6 +56,14 @@ namespace WebApp
 
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                                  policy => policy.RequireClaim("Delete Role")
+                    );
+            });
+
             services.AddScoped <IEmployeeRepository, SQLEmployeeRepository>();
         }
 
